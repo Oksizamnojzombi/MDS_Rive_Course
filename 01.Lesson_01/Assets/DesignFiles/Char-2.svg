@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500">
+  <rect width="500" height="500"></rect>
+  <path fill="#FD6698" transform="translate(250 310.004)" d="M0 -60C33.1371 -60 60 -33.1371 60 0C60 33.1371 33.1371 60 0 60C-33.1371 60 -60 33.1371 -60 0C-60 -33.1371 -33.1371 -60 0 -60Z"></path>
+  <path fill="#FD6698" transform="matrix(1 -3.01992e-07 3.01992e-07 1 301.012 310.004)" d="M-0.462942 -19.182L27.8622 5.87659C32.2931 9.7965 30.4368 15.001 24.5254 15.232L-7.18828 16.4716"></path>
+  <path fill="#FD6698" transform="matrix(-1 -1.50996e-07 -1.50996e-07 1 198.988 310.004)" d="M-0.462942 -19.182L-7.18828 16.4716L24.5254 15.232C30.4368 15.001 32.2931 9.7965 27.8622 5.87659"></path>
+  <clipPath id="cl_3">
+    <path d="M199.451 290.822L206.176 326.476L174.463 325.236C168.551 325.005 166.695 319.8 171.126 315.881M300.549 290.822L328.874 315.881C333.305 319.8 331.449 325.005 325.537 325.236L293.824 326.476M250 250.004C283.137 250.004 310 276.867 310 310.004C310 343.141 283.137 370.004 250 370.004C216.863 370.004 190 343.141 190 310.004C190 276.867 216.863 250.004 250 250.004Z"></path>
+  </clipPath>
+  <g clip-path="url(#cl_3)">
+    <defs>
+      <linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="2.8227234" y1="-121.12187" x2="2.8227234" y2="121.12186">
+        <stop offset="0" stop-color="#00FF07"></stop>
+        <stop offset="0.35714287" stop-color="#00FF07"></stop>
+        <stop offset="0.67460316" stop-color="#43FEFF"></stop>
+        <stop offset="1" stop-color="#43FEFF"></stop>
+      </linearGradient>
+    </defs>
+    <path fill="url(#gradient_0)" transform="translate(250 300.004)" d="M-85.4978 -121.122L85.4978 -121.122L85.4978 121.122L-85.4978 121.122L-85.4978 -121.122Z"></path>
+    <path fill="white" transform="translate(250 300.004)" d="M0 -22C19.33 -22 35 -12.1503 35 0C35 12.1503 19.33 22 0 22C-19.33 22 -35 12.1503 -35 0C-35 -12.1503 -19.33 -22 0 -22Z"></path>
+    <path fill="#2B0C5C" transform="translate(236 296.004)" d="M0 -4C2.20914 -4 4 -2.20914 4 0C4 2.20914 2.20914 4 0 4C-2.20914 4 -4 2.20914 -4 0C-4 -2.20914 -2.20914 -4 0 -4Z"></path>
+    <path fill="#2B0C5C" transform="translate(264 296.004)" d="M0 -4C2.20914 -4 4 -2.20914 4 0C4 2.20914 2.20914 4 0 4C-2.20914 4 -4 2.20914 -4 0C-4 -2.20914 -2.20914 -4 0 -4Z"></path>
+    <path fill="none" stroke="#FF9600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(250 302.596)" d="M0 -4.5C2.30119 -4.5 4.16667 -2.48528 4.16667 0C4.16667 2.48528 2.30119 4.5 0 4.5C-2.30119 4.5 -4.16667 2.48528 -4.16667 0C-4.16667 -2.48528 -2.30119 -4.5 0 -4.5"></path>
+  </g>
+</svg>

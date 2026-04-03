@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500">
+  <rect width="500" height="500"></rect>
+  <path fill="#0C0C0C" transform="translate(250 0)" d="M-250 -0L250 0L250 500L-250 500L-250 -0Z"></path>
+  <path fill="#FD6698" transform="translate(250 310.004)" d="M0 -60C33.1371 -60 60 -33.1371 60 0C60 33.1371 33.1371 60 0 60C-33.1371 60 -60 33.1371 -60 0C-60 -33.1371 -33.1371 -60 0 -60Z"></path>
+  <path fill="white" transform="translate(250 300.004)" d="M0 -22C19.33 -22 35 -12.1503 35 0C35 12.1503 19.33 22 0 22C-19.33 22 -35 12.1503 -35 0C-35 -12.1503 -19.33 -22 0 -22Z"></path>
+  <path fill="#2B0C5C" transform="translate(236 296.004)" d="M0 -4C2.20914 -4 4 -2.20914 4 0C4 2.20914 2.20914 4 0 4C-2.20914 4 -4 2.20914 -4 0C-4 -2.20914 -2.20914 -4 0 -4Z"></path>
+  <path fill="#2B0C5C" transform="translate(264 296.004)" d="M0 -4C2.20914 -4 4 -2.20914 4 0C4 2.20914 2.20914 4 0 4C-2.20914 4 -4 2.20914 -4 0C-4 -2.20914 -2.20914 -4 0 -4Z"></path>
+  <path fill="none" stroke="#2B0C5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(250 296.004)" d="M4.80061 4.88378C3.85906 7.93676 2.06205 10 0 10C-2.06205 10 -3.85906 7.93676 -4.8006 4.88378"></path>
+</svg>

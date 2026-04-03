@@ -4,17 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rive Hello World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="CSS/styles.css" /> -->
+    <link rel="stylesheet" href="CSS/styles_dark.css" /> 
   </head>
   <body>
-    <canvas id="canvas1" width="500" height="500"></canvas>
+    
 
-    <canvas id="canvas2" width="500" height="500"></canvas>
+    
+
+    <section class="page-section">
+    <div class="main-container">
+
+      <div class="lesson-card">
+        <div class="lesson-info">
+          <p class="lesson-number">Lesson 01</p>
+          <h2 class="lesson-title">Jump Ball</h2>
+          <p class="lesson-description">
+            In this lesson, I familiarized myself with the interface, 
+            tools, and workflow in Rive. I applied the basic techniques 
+            in a hands-on project to understand the fundamentals of working with Rive and build a solid foundation in motion design!
+          </p>
+        </div>
+
+        <div class="lesson-canvas">
+          <div class="canvas-shell">
+            <div class="canvas-inner">
+              <canvas id="canvas1" width="500" height="500"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lesson-card">
+        <div class="lesson-info">
+          <p class="lesson-number">Lesson 02</p>
+          <h2 class="lesson-title">Water Bubble</h2>
+          <p class="lesson-description">
+            In this lesson, I learned how to create realistic water effects. 
+            I discovered how to incorporate sliders to improve user interaction, 
+            and I applied these skills to simulate the natural, dynamic movement of water.
+          </p>
+        </div>
+
+        <div class="lesson-canvas">
+          <div class="canvas-shell">
+            <div class="canvas-inner">
+              <canvas id="canvas2" width="500" height="500"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
     <script src="https://unpkg.com/@rive-app/canvas"></script>
     <script src="https://unpkg.com/@rive-app/canvas@2.36.0"></script>
     <script>
       const r = new rive.Rive({
-        src: "01.mds_lesson_01_jumping_ball.riv",
+        src: "01.Lesson_01/Final_Result/01.mds_lesson_01_jumping_ball.riv",
         canvas: document.getElementById("canvas1"),
         autoplay: true,
         // artboard: "Arboard", // Optional. If not supplied the default is selected
@@ -26,7 +79,7 @@
       });
 
       const r2 = new rive.Rive({
-        src: "02.mds_lesson02_waterbubble.riv",
+        src: "02.Lesson_02/Final_Result/02.mds_lesson02_waterbubble.riv",
         canvas: document.getElementById("canvas2"),
         autoplay: true,
         // artboard: "Arboard", // Optional. If not supplied the default is selected
