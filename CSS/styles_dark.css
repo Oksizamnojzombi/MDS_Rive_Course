@@ -1,0 +1,492 @@
+:root {
+  --bg: #0d0c14;
+  --bg-2: #151326;
+  --surface: rgba(22, 20, 36, 0.9);
+  --surface-2: rgba(31, 28, 52, 0.96);
+  --text: #f6f2ff;
+  --muted: #b8afcf;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #ff4fa3;
+  --accent-2: #7c5cff;
+  --accent-3: #4da3ff;
+  --glow: rgba(77, 163, 255, 0.18);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.22);
+  --orange: #f9cf59;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(124, 92, 255, 0.22), transparent 30%),
+    radial-gradient(circle at 85% 18%, rgba(77, 163, 255, 0.14), transparent 26%),
+    radial-gradient(circle at 70% 80%, rgba(255, 79, 163, 0.16), transparent 30%),
+    linear-gradient(180deg, #0b0a12 0%, #12101d 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-section {
+  padding: 72px 24px;
+}
+
+.main-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  gap: 30px;
+}
+
+.lesson-card {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
+  gap: 56px;
+  align-items: center;
+  padding: 34px;
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(28, 25, 46, 0.92) 0%, rgba(18, 16, 31, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.lesson-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.08), transparent 35%),
+    linear-gradient(315deg, rgba(255, 79, 163, 0.06), transparent 35%);
+  pointer-events: none;
+}
+
+.lesson-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 33px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.lesson-card:hover {
+  border-color: rgba(124, 92, 255, 0.18);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(77, 163, 255, 0.08);
+}
+
+.lesson-info {
+  max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+
+.lesson-number {
+  margin: 0 0 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ff7ebb;
+}
+
+.lesson-title {
+  margin: 0 0 18px;
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.lesson-description {
+  margin: 0;
+  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.lesson-canvas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.canvas-shell {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 16px 40px rgba(0, 0, 0, 0.28),
+    0 0 40px rgba(124, 92, 255, 0.18),
+    0 0 60px rgba(77, 163, 255, 0.12);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.canvas-shell:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(124, 92, 255, 0.25),
+    0 0 90px rgba(77, 163, 255, 0.22),
+    0 0 120px rgba(64, 224, 208, 0.18); /* ⬅️ бірюза */
+  
+  transform: translateY(-2px) scale(1.01);
+}
+
+.canvas-inner {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #171428 0%, #100e1b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.canvas-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.canvas-inner canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canvas-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #c5bde0;
+  background:
+    radial-gradient(circle at top, rgba(124, 92, 255, 0.2), transparent 35%),
+    linear-gradient(180deg, #19162b 0%, #110f1d 100%);
+}
+
+/* SUNNY ROCK */
+
+.sunny-rock {
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
+}
+
+.sunny-rock .canvas-inner {
+  aspect-ratio: 500 / 700;
+  align-items: flex-start;
+}
+
+.sunny-rock .canvas-inner canvas {
+  width: 100%;
+  aspect-ratio: 500 / 700;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.sunny-rock .canvas-shell {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Artist parallax */
+
+.artist-parallax {
+  grid-template-columns: minmax(320px, 1fr) minmax(640px, 750px);
+}
+
+.artist-parallax .canvas-shell {
+  width: 100%;
+  max-width: 750px;
+}
+
+.artist-parallax .canvas-inner {
+  width: 100%;
+  aspect-ratio: 750 / 500;
+  border-radius: 24px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-parallax .canvas-inner canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Tooltips */
+
+.lesson-tooltip {
+  margin: 36px 0 0;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.65;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+.lesson-card:hover .lesson-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--orange);
+}
+
+/* FOOTER */
+
+.site-footer {
+  width: 100%;
+  margin-top: 56px;
+  padding: 28px 24px 40px;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 14, 0) 0%, rgba(6, 7, 14, 0.4) 18%, rgba(5, 6, 12, 0.92) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 28px 24px;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 18, 0.96) 0%, rgba(4, 5, 10, 1) 100%);
+  border: none;
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 -24px 60px rgba(0, 0, 0, 0.24);
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  min-height: 52px;
+  padding: 0 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f3efff;
+  background:
+    linear-gradient(180deg, rgba(28, 26, 45, 0.96) 0%, rgba(18, 17, 30, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.22),
+    0 0 0 rgba(77, 163, 255, 0);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    background 0.35s ease;
+}
+
+.footer-link:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(32, 30, 52, 0.98) 0%, rgba(19, 18, 33, 1) 100%);
+  box-shadow:
+    0 18px 50px rgba(20, 20, 20, 0.06);
+}
+
+.footer-link:focus-visible {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 18px 50px rgba(20, 20, 20, 0.06);
+}
+
+.footer-link {
+  gap: 10px; /* ⬅️ відстань між іконкою і текстом */
+}
+
+/* іконка */
+.footer-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* маленька анімація на hover */
+.footer-link:hover .footer-icon {
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+/* MEDIA */
+@media (max-width: 1024px) {
+  .page-section {
+    padding: 56px 20px;
+  }
+
+  .lesson-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 28px;
+  }
+
+  .lesson-info,
+  .lesson-description {
+    max-width: 100%;
+  }
+
+  .canvas-shell {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-section {
+    padding: 32px 16px;
+  }
+
+  .main-container {
+    gap: 20px;
+  }
+
+  .lesson-card {
+    gap: 22px;
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .lesson-card::after {
+    border-radius: 23px;
+  }
+
+  .lesson-number {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  .lesson-title {
+    margin-bottom: 14px;
+    font-size: 30px;
+    line-height: 1.02;
+  }
+
+  .lesson-description {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .canvas-shell {
+    padding: 6px;
+    border-radius: 22px;
+  }
+
+  .canvas-inner,
+  .canvas-placeholder {
+    border-radius: 18px;
+  }
+
+  .canvas-placeholder {
+    min-height: 220px;
+    font-size: 16px;
+  }
+
+  .lesson-tooltip {
+    margin-top: 24px;
+    font-size: 15px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .site-footer {
+    margin-top: 40px;
+    padding: 24px 0 28px;
+  }
+
+  .footer-container {
+    padding: 20px 16px;
+  }
+
+  .footer-nav {
+    gap: 10px;
+  }
+
+  .footer-link {
+    min-width: calc(50% - 5px);
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-link {
+    min-width: 100%;
+  }
+}
