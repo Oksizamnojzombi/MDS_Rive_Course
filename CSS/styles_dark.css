@@ -258,6 +258,30 @@ body {
   display: block;
 }
 
+/* Octopus */
+
+.octopus {
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
+}
+
+.octopus .canvas-inner {
+  aspect-ratio: 500 / 800;
+  align-items: flex-start;
+}
+
+.octopus .canvas-inner canvas {
+  width: 100%;
+  aspect-ratio: 500 / 800;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.octopus .canvas-shell {
+  width: 100%;
+  max-width: 500px;
+}
+
 /* Tooltips */
 
 .lesson-tooltip {

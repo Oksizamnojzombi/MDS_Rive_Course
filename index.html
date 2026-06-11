@@ -187,6 +187,27 @@
         </div>
       </div>
 
+      <div class="lesson-card octopus">
+        <div class="lesson-info">
+          <p class="lesson-number">Lesson 08</p>
+          <h2 class="lesson-title">Octopus Echo</h2>
+          <p class="lesson-description">
+             
+          </p>
+          <p class="lesson-tooltip">
+            Hold down the cursor to see the result
+          </p>
+        </div>
+
+        <div class="lesson-canvas">
+          <div class="canvas-shell">
+            <div class="canvas-inner">
+              <canvas id="canvas8" width="500" height="800"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -321,6 +342,17 @@
         canvas: document.getElementById("canvas7"),
         autoplay: true,
         stateMachines: "Fire360_StateMashine",
+        onLoad: () => {
+          r6.resizeDrawingSurfaceToCanvas();
+        },
+        
+      });
+
+      const r8 = new rive.Rive({
+        src: "08.Lesson_08/Final_Result/08.mds_lesson08_octopus.riv",
+        canvas: document.getElementById("canvas8"),
+        autoplay: true,
+        stateMachines: "OctopusEcho",
         onLoad: () => {
           r6.resizeDrawingSurfaceToCanvas();
         },
