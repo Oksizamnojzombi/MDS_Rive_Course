@@ -2,363 +2,333 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rive Hello World</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="CSS/styles.css" /> -->
-    <link rel="stylesheet" href="CSS/styles_dark.css" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Rive Lessons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/styles_dark.css" />
   </head>
   <body>
-    
 
-    
+    <!-- ===================== HERO (1000x1000 interactive menu) ===================== -->
+    <header class="hero">
+      <a class="hero-logo" href="#lessons"><span class="dot"></span>Rive Lessons</a>
 
-    <section class="page-section">
-    <div class="main-container">
-
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 01</p>
-          <h2 class="lesson-title">Jump Ball</h2>
-          <p class="lesson-description">
-            In this lesson, I familiarized myself with the interface, 
-            tools, and workflow in Rive. I applied the basic techniques 
-            in a hands-on project to understand the fundamentals of working with Rive and build a solid foundation in motion design!
-          </p>
-          <p class="lesson-tooltip">
-            Hover over the bird, and it will change direction based on the cursor's position; </br>
-            Click on the ball, and it will change its skin; </br>
-            Click on the floor, and the ladder will turn into a road 
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas1" width="500" height="500"></canvas>
-            </div>
-          </div>
-        </div>
-
+      <div class="hero-stage">
+        <canvas id="heroCanvas" width="2000" height="1000"></canvas>
       </div>
 
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 02</p>
-          <h2 class="lesson-title">Water Bubble</h2>
-          <p class="lesson-description">
-            In this lesson, I learned how to create realistic water effects. 
-            I discovered how to incorporate sliders to improve user interaction, 
-            and I applied these skills to simulate the natural, dynamic movement of water.
-          </p>
-          <p class="lesson-tooltip">
-            Hover your cursor over the ball and click on it.</br>
-            Experiment with the ball's size and speed using the sliders.
-          </p>
-        </div>
+      <div class="hero-scroll">
+        Scroll
+        <span class="chev"></span>
+      </div>
+    </header>
 
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas2" width="500" height="500"></canvas>
-            </div>
-          </div>
-        </div>
-
+    <!-- ===================== LESSONS GALLERY ===================== -->
+    <main class="lessons" id="lessons">
+      <div class="lessons-head reveal">
+        <h2>Lessons</h2>
+        <p class="sub">8 interactive Rive animations — hover a card to read more</p>
       </div>
 
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 03</p>
-          <h2 class="lesson-title">Belly Mixing</h2>
-          <p class="lesson-description">
-            In this lesson, I configured the character rigging and joystick controls. 
-            I refined the animation controls, learned techniques for smooth transitions between 
-            states to create seamless movements, and learned how to create more complex and realistic character movements.
-          </p>
-          <p class="lesson-tooltip">
-            Use the slider and experiment with the amplitude. 
-          </p>
-        </div>
+      <div class="lessons-grid">
 
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas3" width="500" height="500"></canvas>
-            </div>
+        <article class="lesson-card reveal" style="--accent: var(--teal)">
+          <div class="card-canvas">
+            <span class="card-num">01</span>
+            <div class="canvas-inner"><canvas id="canvas1" width="500" height="500"></canvas></div>
           </div>
-        </div>
-      </div>
-
-      <div class="lesson-card sunny-rock">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 04</p>
-          <h2 class="lesson-title">Sunny Rock</h2>
-          <p class="lesson-description">
-            In this lesson, I learned more about advanced customization and personalization options, rigged a character, 
-            and studied mixing techniques in Rive to create diverse and unique animations with a professional look.
-          </p>
-          <p class="lesson-tooltip">
-            Make the Sunny dance rock. </br>
-            Hover your cursor over it and click. </br>
-            Experiment with the Sunny's size and amplitude using the sliders.
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas4" width="500" height="700"></canvas>
-            </div>
+          <div class="card-body">
+            <h3 class="card-title">Jump Ball</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Familiarized myself with the interface, tools, and workflow in Rive,
+                applying basic techniques to build a solid foundation in motion design.
+              </p>
+              <p class="card-hint">
+                Hover the bird to change its direction; click the ball to change its skin;
+                click the floor to turn the ladder into a road.
+              </p>
+            </div></div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="lesson-card artist-parallax">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 05</p>
-          <h2 class="lesson-title">Artist Parallax</h2>
-          <p class="lesson-description">
-            In this lesson, I created an animation of multi-layered parallax scenes. 
-            I learned how to create cursor-tracking particles using nested artboards, 
-            adding depth and interactivity to my animations to create a more realistic effect. 
-          </p>
-          <p class="lesson-tooltip">
-            Try changing the artist’s drawing style,</br> 
-            drag the elements that change with your cursor, </br>
-            and try clicking on his head. 
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas5" width="750" height="500"></canvas>
-            </div>
+        <article class="lesson-card reveal" style="--accent: var(--blue)">
+          <div class="card-canvas">
+            <span class="card-num">02</span>
+            <div class="canvas-inner"><canvas id="canvas2" width="500" height="500"></canvas></div>
           </div>
-        </div>
-      </div>
-
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 06</p>
-          <h2 class="lesson-title">Lazer Boy</h2>
-          <p class="lesson-description">
-            In this lesson, I created an animation featuring multi-layered parallax scenes. 
-            I learned how to create cursor-tracking particles using nested artboards, 
-            adding depth and interactivity to my animations to create a more realistic effect. 
-          </p>
-          <p class="lesson-tooltip">
-            Try to hit the target;  </br>
-            click on the field 
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas6" width="500" height="500"></canvas>
-            </div>
+          <div class="card-body">
+            <h3 class="card-title">Water Bubble</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Learned to create realistic water effects and used sliders to improve
+                interaction, simulating natural, dynamic movement of water.
+              </p>
+              <p class="card-hint">
+                Hover and click the ball. Experiment with its size and speed using the sliders.
+              </p>
+            </div></div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 07</p>
-          <h2 class="lesson-title">Fire 360</h2>
-          <p class="lesson-description">
-             
-          </p>
-          <p class="lesson-tooltip">
-            Try lighting the flame by clicking on it, </br>
-            then stop the platform
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas7" width="500" height="500"></canvas>
-            </div>
+        <article class="lesson-card reveal" style="--accent: var(--yellow)">
+          <div class="card-canvas">
+            <span class="card-num">03</span>
+            <div class="canvas-inner"><canvas id="canvas3" width="500" height="500"></canvas></div>
           </div>
-        </div>
-      </div>
-
-      <div class="lesson-card octopus">
-        <div class="lesson-info">
-          <p class="lesson-number">Lesson 08</p>
-          <h2 class="lesson-title">Octopus Echo</h2>
-          <p class="lesson-description">
-             
-          </p>
-          <p class="lesson-tooltip">
-            Hold down the cursor to see the result
-          </p>
-        </div>
-
-        <div class="lesson-canvas">
-          <div class="canvas-shell">
-            <div class="canvas-inner">
-              <canvas id="canvas8" width="500" height="800"></canvas>
-            </div>
+          <div class="card-body">
+            <h3 class="card-title">Belly Mixing</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Configured character rigging and joystick controls, refined animation states,
+                and learned smooth transitions for complex, realistic movement.
+              </p>
+              <p class="card-hint">Use the slider and experiment with the amplitude.</p>
+            </div></div>
           </div>
-        </div>
+        </article>
+
+        <article class="lesson-card reveal" style="--accent: var(--lime); --ar: 500 / 700">
+          <div class="card-canvas">
+            <span class="card-num">04</span>
+            <div class="canvas-inner"><canvas id="canvas4" width="500" height="700"></canvas></div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Sunny Rock</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Explored advanced customization and personalization, rigged a character,
+                and studied mixing techniques for diverse, professional-looking animations.
+              </p>
+              <p class="card-hint">
+                Make Sunny dance — hover and click. Experiment with size and amplitude using the sliders.
+              </p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="lesson-card reveal wide" style="--accent: var(--teal); --ar: 750 / 500">
+          <div class="card-canvas">
+            <span class="card-num">05</span>
+            <div class="canvas-inner"><canvas id="canvas5" width="750" height="500"></canvas></div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Artist Parallax</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Created multi-layered parallax scenes with cursor-tracking particles using
+                nested artboards, adding depth and interactivity.
+              </p>
+              <p class="card-hint">
+                Change the artist's drawing style, drag the cursor-reactive elements,
+                and try clicking his head.
+              </p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="lesson-card reveal" style="--accent: var(--orange)">
+          <div class="card-canvas">
+            <span class="card-num">06</span>
+            <div class="canvas-inner"><canvas id="canvas6" width="500" height="500"></canvas></div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Lazer Boy</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Built interactive targeting with layered scenes and nested artboards for a
+                more realistic, reactive effect.
+              </p>
+              <p class="card-hint">Try to hit the target; click on the field.</p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="lesson-card reveal" style="--accent: var(--yellow)">
+          <div class="card-canvas">
+            <span class="card-num">07</span>
+            <div class="canvas-inner"><canvas id="canvas7" width="500" height="500"></canvas></div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Fire 360</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Worked with rotating platforms and reactive light, controlling state changes
+                through user interaction.
+              </p>
+              <p class="card-hint">Light the flame by clicking it, then stop the platform.</p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="lesson-card reveal" style="--accent: var(--teal); --ar: 500 / 800">
+          <div class="card-canvas">
+            <span class="card-num">08</span>
+            <div class="canvas-inner"><canvas id="canvas8" width="500" height="800"></canvas></div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Octopus Echo</h3>
+            <div class="card-reveal"><div>
+              <p class="card-desc">
+                Explored continuous, held-input interaction and echo-style motion driven by
+                the cursor.
+              </p>
+              <p class="card-hint">Hold down the cursor to see the result.</p>
+            </div></div>
+          </div>
+        </article>
+
       </div>
+    </main>
 
-    </div>
-  </section>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <nav class="footer-nav" aria-label="Social links">
+        <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
+          <span class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="6" stroke="currentColor" stroke-width="1.6" />
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+            </svg>
+          </span>
+          Instagram
+        </a>
 
-  <footer class="site-footer">
-  <div class="footer-container">
-    <nav class="footer-nav" aria-label="Social links">
+        <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
+          <span class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+              <path d="M5 8c5 0 10 3 12 9" stroke="currentColor" stroke-width="1.6" />
+              <path d="M7 19c1-4 5-7 11-7" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </span>
+          Dribbble
+        </a>
 
-      <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
-        <span class="footer-icon">
-          <!-- Instagram -->
-          <svg viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="3" width="18" height="18" rx="6" stroke="currentColor" stroke-width="1.6"/>
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-          </svg>
-        </span>
-        Instagram
-      </a>
+        <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
+          <span class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="8" width="4" height="13" fill="currentColor" />
+              <circle cx="5" cy="5" r="2" fill="currentColor" />
+              <path d="M10 21v-7c0-2 1-3 3-3s3 1 3 3v7" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </span>
+          LinkedIn
+        </a>
 
-      <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
-        <span class="footer-icon">
-          <!-- Dribbble -->
-          <svg viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M5 8c5 0 10 3 12 9" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M7 19c1-4 5-7 11-7" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-        </span>
-        Dribbble
-      </a>
+        <a href="mailto:hello@example.com" class="footer-link">
+          <span class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6" />
+              <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </span>
+          Email
+        </a>
+      </nav>
+    </footer>
 
-      <a href="#" class="footer-link" target="_blank" rel="noopener noreferrer">
-        <span class="footer-icon">
-          <!-- LinkedIn -->
-          <svg viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="8" width="4" height="13" fill="currentColor"/>
-            <circle cx="5" cy="5" r="2" fill="currentColor"/>
-            <path d="M10 21v-7c0-2 1-3 3-3s3 1 3 3v7" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-        </span>
-        LinkedIn
-      </a>
-
-      <a href="mailto:hello@example.com" class="footer-link">
-        <span class="footer-icon">
-          <!-- Email -->
-          <svg viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-        </span>
-        Email
-      </a>
-
-    </nav>
-  </div>
-</footer>
-
-    <script src="https://unpkg.com/@rive-app/canvas"></script>
-    <script src="https://unpkg.com/@rive-app/canvas@2.36.0"></script>
+    <script src="https://unpkg.com/@rive-app/webgl2@2.36.0"></script>
     <script>
-      const r = new rive.Rive({
-        src: "01.Lesson_01/Final_Result/01.mds_lesson_01_jumping_ball.riv",
-        canvas: document.getElementById("canvas1"),
-        autoplay: true,
-        // artboard: "Arboard", // Optional. If not supplied the default is selected
-        stateMachines: "Jumping_Ball",
-        onLoad: () => {
-          // Ensure the drawing surface matches the canvas size and device pixel ratio
-          r.resizeDrawingSurfaceToCanvas();
-        },
+      // ============================================================
+      //  HERO menu — впиши свій шлях та назву State Machine нижче
+      // ============================================================
+      const HERO_SRC = "09.BonusLesson/Final_Result/09.mds_bonuslesson2.riv";        // ← шлях до hero .riv (кругове меню)
+      const HERO_STATE_MACHINE = "Room_MainStMashine"; // ← назва State Machine у hero .riv
+
+      const fitContain = {
+        fit: rive.Fit.Contain,
+        alignment: rive.Alignment.Center,
+      };
+
+      const instances = [];
+
+      function mount(canvasId, src, stateMachine) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const inst = new rive.Rive({
+          src,
+          canvas,
+          autoplay: true,
+          stateMachines: stateMachine,
+          layout: new rive.Layout(fitContain),
+          onLoad: () => inst.resizeDrawingSurfaceToCanvas(),
+        });
+        instances.push(inst);
+      }
+
+      // Hero
+      mount("heroCanvas", HERO_SRC, HERO_STATE_MACHINE);
+
+      // Lessons
+      mount("canvas1", "01.Lesson_01/Final_Result/01.mds_lesson_01_jumping_ball.riv", "Jumping_Ball");
+      mount("canvas2", "02.Lesson_02/Final_Result/02.mds_lesson02_waterbubble.riv", "BubleStateMashine");
+      mount("canvas3", "03.Lesson_03/Final_Result/03.mds_lesson03_bellymixing.riv", "Belly_SatetMashine");
+      mount("canvas4", "04.Lesson_04/Final_Result/04.mds_lesson04_sunnyrock.riv", "RockSunnyStateMashine");
+      mount("canvas5", "05.Lesson_05/Final_Result/05.mds_lesson05_artistparallax.riv", "Artist_StateMashineFinal");
+      mount("canvas6", "06.Lesson_06/Final_Result/06.mds_lesson06_lazerboy.riv", "LazerBoyStateMashine");
+      mount("canvas7", "07.Lesson_07/Final_Result/07.mds_lesson07_firesiage.riv", "Fire360_StateMashine");
+      mount("canvas8", "08.Lesson_08/Final_Result/08.mds_lesson08_octopus.riv", "OctopusEcho");
+
+      // ============================================================
+      //  Masonry — pack cards tightly while keeping each canvas ratio
+      // ============================================================
+      function layoutMasonry() {
+        const grid = document.querySelector(".lessons-grid");
+        if (!grid) return;
+        const cs = getComputedStyle(grid);
+        const rowH = parseFloat(cs.gridAutoRows) || 8;
+        const gap = parseFloat(cs.rowGap) || 0;
+        grid.querySelectorAll(".lesson-card").forEach((card) => {
+          const canvas = card.querySelector(".card-canvas");
+          const body = card.querySelector(".card-body");
+          if (!canvas || !body) return;
+          const h =
+            canvas.getBoundingClientRect().height +
+            body.getBoundingClientRect().height +
+            2; /* card top + bottom border */
+          const span = Math.max(1, Math.ceil((h + gap) / (rowH + gap)));
+          card.style.gridRowEnd = "span " + span;
+        });
+      }
+
+      layoutMasonry();
+      window.addEventListener("load", layoutMasonry);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(layoutMasonry);
+      }
+
+      // Keep every drawing surface crisp + repack on resize / orientation change
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          instances.forEach((i) => i.resizeDrawingSurfaceToCanvas());
+          layoutMasonry();
+        }, 120);
       });
 
-      const r2 = new rive.Rive({
-        src: "02.Lesson_02/Final_Result/02.mds_lesson02_waterbubble.riv",
-        canvas: document.getElementById("canvas2"),
-        autoplay: true,
-        // artboard: "Arboard", // Optional. If not supplied the default is selected
-        stateMachines: "BubleStateMashine",
-        onLoad: () => {
-          // Ensure the drawing surface matches the canvas size and device pixel ratio
-          r2.resizeDrawingSurfaceToCanvas();
+      // ============================================================
+      //  Scroll-reveal for cards & heading
+      // ============================================================
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              io.unobserve(e.target);
+            }
+          });
         },
-      });
-
-      const r3 = new rive.Rive({
-        src: "03.Lesson_03/Final_Result/03.mds_lesson03_bellymixing.riv",
-        canvas: document.getElementById("canvas3"),
-        autoplay: true,
-        stateMachines: "Belly_SatetMashine",
-        onLoad: () => {
-          r3.resizeDrawingSurfaceToCanvas();
-        },
-        
-      });
-
-      const r4 = new rive.Rive({
-        src: "04.Lesson_04/Final_Result/04.mds_lesson04_sunnyrock.riv",
-        canvas: document.getElementById("canvas4"),
-        autoplay: true,
-        stateMachines: "RockSunnyStateMashine",
-        onLoad: () => {
-          r4.resizeDrawingSurfaceToCanvas();
-        },
-        
-      });
-
-      const r5 = new rive.Rive({
-        src: "05.Lesson_05/Final_Result/05.mds_lesson05_artistparallax.riv",
-        canvas: document.getElementById("canvas5"),
-        autoplay: true,
-        stateMachines: "Artist_StateMashineFinal",
-        onLoad: () => {
-          r5.resizeDrawingSurfaceToCanvas();
-        },
-        
-      });
-
-      const r6 = new rive.Rive({
-        src: "06.Lesson_06/Final_Result/06.mds_lesson06_lazerboy.riv",
-        canvas: document.getElementById("canvas6"),
-        autoplay: true,
-        stateMachines: "LazerBoyStateMashine",
-        onLoad: () => {
-          r6.resizeDrawingSurfaceToCanvas();
-        },
-        
-      });
-
-      const r7 = new rive.Rive({
-        src: "07.Lesson_07/Final_Result/07.mds_lesson07_firesiage.riv",
-        canvas: document.getElementById("canvas7"),
-        autoplay: true,
-        stateMachines: "Fire360_StateMashine",
-        onLoad: () => {
-          r6.resizeDrawingSurfaceToCanvas();
-        },
-        
-      });
-
-      const r8 = new rive.Rive({
-        src: "08.Lesson_08/Final_Result/08.mds_lesson08_octopus.riv",
-        canvas: document.getElementById("canvas8"),
-        autoplay: true,
-        stateMachines: "OctopusEcho",
-        onLoad: () => {
-          r6.resizeDrawingSurfaceToCanvas();
-        },
-        
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el, i) => {
+        el.style.transitionDelay = (i % 4) * 70 + "ms";
+        io.observe(el);
       });
     </script>
-
   </body>
 </html>

@@ -1,18 +1,31 @@
+/* ============================================================
+   RIVE LESSONS — redesign
+   Minimalist dark theme · palette:
+   teal #00BECD · blue #0093BA · yellow #FFD700 · lime #D0DF00 · orange #FF9E52
+   ============================================================ */
+
 :root {
-  --bg: #0d0c14;
-  --bg-2: #151326;
-  --surface: rgba(22, 20, 36, 0.9);
-  --surface-2: rgba(31, 28, 52, 0.96);
-  --text: #f6f2ff;
-  --muted: #b8afcf;
-  --line: rgba(255, 255, 255, 0.08);
-  --accent: #a6f8df;
-  --accent-2: #5cb8ff;
-  --accent-3: #e1ff4d;
-  --glow: rgba(77, 163, 255, 0.18);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.22);
-  --orange: #f9cf59;
+  --bg: #050608;
+  --bg-2: #0a0c0e;
+  --card: #0e1112;
+  --card-2: #0b0e0f;
+  --tile: #08171a;
+
+  --text: #f4fffe;
+  --muted: rgba(190, 215, 213, 0.62);
+  --faint: rgba(190, 215, 213, 0.38);
+  --line: rgba(255, 255, 255, 0.07);
+
+  --teal: #00becd;
+  --blue: #0093ba;
+  --yellow: #ffd700;
+  --lime: #d0df00;
+  --orange: #ff9e52;
+
+  --accent: var(--teal); /* per-card override via inline style */
+
+  --radius: 18px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 * {
@@ -27,490 +40,469 @@ body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 15% 20%, rgba(124, 92, 255, 0.22), transparent 30%),
-    radial-gradient(circle at 85% 18%, rgba(77, 163, 255, 0.14), transparent 26%),
-    radial-gradient(circle at 70% 80%, rgba(255, 79, 163, 0.16), transparent 30%),
-    linear-gradient(180deg, #0b0a12 0%, #12101d 100%);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.page-section {
-  padding: 72px 24px;
+/* Faint dissolved gradient orbs across the whole site background.
+   Fixed = they stay put as the page scrolls. Tweak the alpha values
+   (last number in each rgba) to make them more / less visible. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42vw 42vw at 14% 16%, rgba(0, 190, 205, 0.07), transparent 60%),
+    radial-gradient(38vw 38vw at 86% 20%, rgba(0, 147, 186, 0.06), transparent 60%),
+    radial-gradient(46vw 46vw at 80% 84%, rgba(208, 223, 0, 0.05), transparent 62%),
+    radial-gradient(40vw 40vw at 18% 88%, rgba(255, 158, 82, 0.045), transparent 60%);
 }
 
-.main-container {
-  max-width: 1180px;
+/* ============================================================
+   HERO — full viewport height, composition 1000x1000
+   ============================================================ */
+
+.hero {
+  position: relative;
+  height: 100vh;          /* fallback */
+  height: 100svh;         /* real visible viewport (mobile-safe) */
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-start; /* pin the composition to the very top (no top gap) */
+  justify-content: center;
+  overflow: hidden;
+  background: transparent; /* let the body orbs show through the transparent .riv */
+}
+
+/* Stage matches the Rive composition ratio 2000x1000 (2:1).
+   width:100% → fills the full screen width; the `min(..., 200svh)` cap keeps
+   the height from ever exceeding the viewport (height = width / 2).
+   If you change the comp ratio in Rive, update `aspect-ratio` below
+   (and `200svh` = 100svh * width-to-height ratio). */
+.hero-stage {
+  width: min(100%, 200svh);
+  aspect-ratio: 2 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-logo {
+  position: absolute;
+  top: clamp(18px, 3vw, 30px);
+  left: clamp(18px, 4vw, 36px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7); /* keeps the wordmark legible over the rings */
+}
+
+.hero-logo .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 14px rgba(0, 190, 205, 0.7);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: clamp(16px, 3vw, 26px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hero-scroll .chev {
+  width: 18px;
+  height: 18px;
+  border-right: 1.5px solid var(--teal);
+  border-bottom: 1.5px solid var(--teal);
+  transform: rotate(45deg);
+  animation: bob 1.8s var(--ease) infinite;
+  opacity: 0.8;
+}
+
+@keyframes bob {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.45; }
+  50%      { transform: rotate(45deg) translate(3px, 3px); opacity: 1; }
+}
+
+/* ============================================================
+   LESSONS — gallery grid
+   ============================================================ */
+
+.lessons {
+  max-width: 1320px;
   margin: 0 auto;
-  display: grid;
-  gap: 30px;
+  padding: clamp(56px, 9vw, 120px) clamp(16px, 5vw, 64px) clamp(40px, 6vw, 80px);
 }
+
+.lessons-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+  flex-wrap: wrap;
+}
+
+.lessons-head h2 {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.lessons-head .sub {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* desktop: 3 per row, bigger cards */
+  grid-auto-rows: 8px;          /* masonry base unit — JS computes each card's row span */
+  grid-auto-flow: row dense;    /* pack cards into gaps */
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: start;
+}
+
+/* card wider than 1 column (e.g. Artist Parallax 750x500) */
+.lesson-card.wide {
+  grid-column: span 2;
+}
+
+/* ---------- card ---------- */
 
 .lesson-card {
-  display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
-  gap: 56px;
-  align-items: center;
-  padding: 34px;
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(28, 25, 46, 0.92) 0%, rgba(18, 16, 31, 0.96) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: var(--shadow);
   position: relative;
-  overflow: hidden;
-}
-
-.lesson-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, rgba(124, 92, 255, 0.08), transparent 35%),
-    linear-gradient(315deg, rgba(255, 79, 163, 0.06), transparent 35%);
-  pointer-events: none;
-}
-
-.lesson-card::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 33px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition:
+    transform 0.45s var(--ease),
+    border-color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
 }
 
 .lesson-card:hover {
-  border-color: rgba(124, 92, 255, 0.18);
+  transform: translateY(-6px);
+  z-index: 5; /* lift card (and its dropdown) above neighbours */
+  /* fallback for engines without color-mix() */
+  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.45),
-    0 0 60px rgba(77, 163, 255, 0.08);
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--accent);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 0 48px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.lesson-info {
-  max-width: 560px;
+.card-canvas {
   position: relative;
-  z-index: 1;
-}
-
-.lesson-number {
-  margin: 0 0 18px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #ff7ebb;
-}
-
-.lesson-title {
-  margin: 0 0 18px;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-  font-weight: 800;
-  color: var(--text);
-  text-wrap: balance;
-}
-
-.lesson-description {
-  margin: 0;
-  max-width: 520px;
-  font-size: 18px;
-  line-height: 1.75;
-  color: var(--muted);
-  font-weight: 450;
-}
-
-.lesson-canvas {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.canvas-shell {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  border-radius: 30px;
+  aspect-ratio: var(--ar, 1 / 1); /* per-card ratio matches the original canvas */
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--tile); /* fallback for engines without color-mix() */
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.02),
-    0 16px 40px rgba(0, 0, 0, 0.28),
-    0 0 40px rgba(124, 92, 255, 0.18),
-    0 0 60px rgba(77, 163, 255, 0.12);
-  backdrop-filter: blur(10px);
-  transition: box-shadow 0.35s ease, transform 0.35s ease;
-}
-
-.canvas-shell:hover {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 20px 60px rgba(0, 0, 0, 0.35),
-    0 0 60px rgba(124, 92, 255, 0.25),
-    0 0 90px rgba(77, 163, 255, 0.22),
-    0 0 120px rgba(64, 224, 208, 0.18); /* ⬅️ бірюза */
-  
-  transform: translateY(-2px) scale(1.01);
-}
-
-.canvas-inner {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 24px;
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+    var(--tile);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, #171428 0%, #100e1b 100%);
+}
+
+.card-canvas .canvas-inner {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-.canvas-inner::after {
+.card-canvas canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card-num {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.card-canvas::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
   pointer-events: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -20px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
-.canvas-inner canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
+.card-body {
+  padding: 16px 18px 18px;
+  background: var(--card); /* solid, so it covers the panel tucked behind it */
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
-.canvas-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  border-radius: 24px;
+.card-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #c5bde0;
-  background:
-    radial-gradient(circle at top, rgba(124, 92, 255, 0.2), transparent 35%),
-    linear-gradient(180deg, #19162b 0%, #110f1d 100%);
+  gap: 9px;
 }
 
-/* SUNNY ROCK */
-
-.sunny-rock {
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
+.card-title::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+  transition: box-shadow 0.4s var(--ease);
 }
 
-.sunny-rock .canvas-inner {
-  aspect-ratio: 500 / 700;
-  align-items: flex-start;
+.lesson-card:hover .card-title::before {
+  box-shadow: 0 0 12px var(--accent);
 }
 
-.sunny-rock .canvas-inner canvas {
-  width: 100%;
-  aspect-ratio: 500 / 700;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.sunny-rock .canvas-shell {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Artist parallax */
-
-.artist-parallax {
-  grid-template-columns: minmax(320px, 1fr) minmax(640px, 750px);
-}
-
-.artist-parallax .canvas-shell {
-  width: 100%;
-  max-width: 750px;
-}
-
-.artist-parallax .canvas-inner {
-  width: 100%;
-  aspect-ratio: 750 / 500;
-  border-radius: 24px;
+/* hover-revealed text as a dropdown panel — absolute so it never
+   affects the masonry packing (kept out of the canvas so the .riv stays interactive) */
+.card-reveal {
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 100%;
+  margin-top: -18px;   /* tuck up under the card */
+  z-index: -1;         /* sit BEHIND the card so the card overhangs the panel */
   overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-
-.artist-parallax .canvas-inner canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Octopus */
-
-.octopus {
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 470px);
-}
-
-.octopus .canvas-inner {
-  aspect-ratio: 500 / 800;
-  align-items: flex-start;
-}
-
-.octopus .canvas-inner canvas {
-  width: 100%;
-  aspect-ratio: 500 / 800;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.octopus .canvas-shell {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Tooltips */
-
-.lesson-tooltip {
-  margin: 36px 0 0;
-  max-width: 520px;
-  font-size: 17px;
-  line-height: 1.65;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--muted);
+  max-height: 0;
   opacity: 0;
-  transform: translateY(8px);
+  padding: 0 18px;
+  background: var(--card);
+  border: 1px solid var(--accent); /* fallback */
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow:
+    0 26px 44px rgba(0, 0, 0, 0.55),
+    inset 0 12px 14px -12px rgba(0, 0, 0, 0.7); /* the card casts a shadow onto the panel */
+  pointer-events: none;
   transition:
-    opacity 0.35s ease,
-    transform 0.35s ease,
-    color 0.35s ease;
+    max-height 0.45s var(--ease),
+    opacity 0.4s var(--ease),
+    padding 0.45s var(--ease);
 }
 
-.lesson-card:hover .lesson-tooltip {
+.lesson-card:hover .card-reveal,
+.lesson-card:focus-within .card-reveal {
+  max-height: 360px;
   opacity: 1;
-  transform: translateY(0);
-  color: var(--orange);
+  padding: 20px 18px 16px; /* top padding clears the strip hidden under the card */
+  pointer-events: auto;
 }
 
-/* FOOTER */
+.card-desc {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.card-hint {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0.92;
+}
+
+/* ---------- scroll reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-scroll .chev { animation: none; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 
 .site-footer {
   width: 100%;
-  margin-top: 56px;
-  padding: 28px 24px 40px;
-  background:
-    linear-gradient(180deg, rgba(8, 8, 14, 0) 0%, rgba(6, 7, 14, 0.4) 18%, rgba(5, 6, 12, 0.92) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.footer-container {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 28px 24px;
-  border-radius: 0;
-  background:
-    linear-gradient(180deg, rgba(8, 9, 18, 0.96) 0%, rgba(4, 5, 10, 1) 100%);
-  border: none;
-  box-shadow:
-    0 -1px 0 rgba(255, 255, 255, 0.04),
-    0 -24px 60px rgba(0, 0, 0, 0.24);
+  margin-top: clamp(24px, 4vw, 48px);
+  padding: 36px 24px 48px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
 }
 
 .footer-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .footer-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 132px;
-  min-height: 52px;
-  padding: 0 20px;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 22px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #f3efff;
-  background:
-    linear-gradient(180deg, rgba(28, 26, 45, 0.96) 0%, rgba(18, 17, 30, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.22),
-    0 0 0 rgba(77, 163, 255, 0);
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--line);
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease,
-    background 0.35s ease;
+    transform 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
 }
 
 .footer-link:hover {
   transform: translateY(-2px);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.12);
-  background:
-    linear-gradient(180deg, rgba(32, 30, 52, 0.98) 0%, rgba(19, 18, 33, 1) 100%);
-  box-shadow:
-    0 18px 50px rgba(20, 20, 20, 0.06);
+  border-color: rgba(0, 190, 205, 0.55);
+  color: #fff;
+  box-shadow: 0 0 28px rgba(0, 190, 205, 0.18);
 }
 
 .footer-link:focus-visible {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow:
-    0 18px 50px rgba(20, 20, 20, 0.06);
+  border-color: rgba(0, 190, 205, 0.7);
 }
 
-.footer-link {
-  gap: 10px; /* ⬅️ відстань між іконкою і текстом */
-}
-
-/* іконка */
 .footer-icon {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 18px;
   height: 18px;
   opacity: 0.9;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
-.footer-icon svg {
-  width: 100%;
-  height: 100%;
-}
+.footer-icon svg { width: 100%; height: 100%; }
 
-/* маленька анімація на hover */
 .footer-link:hover .footer-icon {
   transform: translateY(-1px);
   opacity: 1;
 }
 
-/* MEDIA */
-@media (max-width: 1024px) {
-  .page-section {
-    padding: 56px 20px;
-  }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
-  .lesson-card {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 28px;
+/* Vertical / portrait screens: don't force full height — the wide 2:1
+   composition just scales by width and everything below sits right under it
+   (no big black gap). */
+@media (orientation: portrait) {
+  .hero {
+    height: auto;
+    min-height: 0;
   }
-
-  .lesson-info,
-  .lesson-description {
-    max-width: 100%;
+  .hero-stage {
+    width: 100%; /* scale the composition by screen width */
   }
-
-  .canvas-shell {
-    max-width: 100%;
+  .hero-scroll {
+    display: none; /* no full-height screen to hint scrolling on */
+  }
+  .hero-logo {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    gap: 7px;
+  }
+  .hero-logo .dot {
+    width: 7px;
+    height: 7px;
   }
 }
 
-@media (max-width: 640px) {
-  .page-section {
-    padding: 32px 16px;
-  }
+@media (max-width: 1000px) {
+  .lessons-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
-  .main-container {
-    gap: 20px;
-  }
+@media (max-width: 680px) {
+  .lessons-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .lesson-card {
-    gap: 22px;
-    padding: 22px;
-    border-radius: 24px;
-  }
-
-  .lesson-card::after {
-    border-radius: 23px;
-  }
-
-  .lesson-number {
-    margin-bottom: 12px;
-    font-size: 12px;
-  }
-
-  .lesson-title {
-    margin-bottom: 14px;
-    font-size: 30px;
-    line-height: 1.02;
-  }
-
-  .lesson-description {
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  .canvas-shell {
-    padding: 6px;
-    border-radius: 22px;
-  }
-
-  .canvas-inner,
-  .canvas-placeholder {
-    border-radius: 18px;
-  }
-
-  .canvas-placeholder {
-    min-height: 220px;
-    font-size: 16px;
-  }
-
-  .lesson-tooltip {
-    margin-top: 24px;
-    font-size: 15px;
+  /* no hover on touch — show the text inline (part of the flow / masonry) */
+  .card-reveal {
+    position: static;
+    margin-top: 0;
+    z-index: auto;
+    max-height: none;
     opacity: 1;
-    transform: none;
+    padding: 0 0 2px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    pointer-events: auto;
   }
-
-  .site-footer {
-    margin-top: 40px;
-    padding: 24px 0 28px;
-  }
-
-  .footer-container {
-    padding: 20px 16px;
-  }
-
-  .footer-nav {
-    gap: 10px;
-  }
-
-  .footer-link {
-    min-width: calc(50% - 5px);
-    min-height: 48px;
-    padding: 0 16px;
-    font-size: 14px;
-  }
+  .card-desc { font-size: 13px; }
 }
 
 @media (max-width: 420px) {
-  .footer-link {
-    min-width: 100%;
-  }
+  .lessons-grid { grid-template-columns: 1fr; }
+  .lesson-card.wide { grid-column: span 1; } /* no room to be wider in a single column */
+  .footer-link { min-width: 100%; justify-content: center; }
 }
