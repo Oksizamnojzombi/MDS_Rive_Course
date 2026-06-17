@@ -15,6 +15,8 @@ course by Maksym Marakhovskyi / Motion Design School.
 | 05 | Artist Parallax | Constraints, 3D parallax, character animation |
 | 06 | Lazer Boy | Multi-layer parallax, nested artboards, particles |
 | 07 | Fire Siage | FX sequences, frame-by-frame in state machine |
+| 08 | Octopus Echo | Held-input interaction, echo motion |
+| 09 | Main Menu (banner) | Radial menu, nested artboards, click navigation |
 
 ## Stack
 
