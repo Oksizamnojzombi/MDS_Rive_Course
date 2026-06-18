@@ -26,6 +26,8 @@
 
   --radius: 18px;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.45s;
+  --dur-link: 0.35s;
 }
 
 * {
@@ -56,10 +58,10 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(42vw 42vw at 14% 16%, rgba(0, 190, 205, 0.07), transparent 60%),
-    radial-gradient(38vw 38vw at 86% 20%, rgba(0, 147, 186, 0.06), transparent 60%),
-    radial-gradient(46vw 46vw at 80% 84%, rgba(208, 223, 0, 0.05), transparent 62%),
-    radial-gradient(40vw 40vw at 18% 88%, rgba(255, 158, 82, 0.045), transparent 60%);
+    radial-gradient(42vw 42vw at 14% 16%, color-mix(in srgb, var(--teal) 7%, transparent), transparent 60%),
+    radial-gradient(38vw 38vw at 86% 20%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 60%),
+    radial-gradient(46vw 46vw at 80% 84%, color-mix(in srgb, var(--lime) 5%, transparent), transparent 62%),
+    radial-gradient(40vw 40vw at 18% 88%, color-mix(in srgb, var(--orange) 4.5%, transparent), transparent 60%);
 }
 
 /* ============================================================
@@ -119,7 +121,7 @@ body::before {
   height: 9px;
   border-radius: 50%;
   background: var(--teal);
-  box-shadow: 0 0 14px rgba(0, 190, 205, 0.7);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--teal) 70%, transparent);
 }
 
 .hero-scroll {
@@ -212,9 +214,9 @@ body::before {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   transition:
-    transform 0.45s var(--ease),
-    border-color 0.45s var(--ease),
-    box-shadow 0.45s var(--ease);
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .lesson-card:hover {
@@ -332,9 +334,9 @@ body::before {
     inset 0 12px 14px -12px rgba(0, 0, 0, 0.7); /* the card casts a shadow onto the panel */
   pointer-events: none;
   transition:
-    max-height 0.45s var(--ease),
+    max-height var(--dur) var(--ease),
     opacity 0.4s var(--ease),
-    padding 0.45s var(--ease);
+    padding var(--dur) var(--ease);
 }
 
 .lesson-card:hover .card-reveal,
@@ -416,22 +418,22 @@ body::before {
   background: var(--card);
   border: 1px solid var(--line);
   transition:
-    transform 0.35s var(--ease),
-    border-color 0.35s var(--ease),
-    color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease);
+    transform var(--dur-link) var(--ease),
+    border-color var(--dur-link) var(--ease),
+    color var(--dur-link) var(--ease),
+    box-shadow var(--dur-link) var(--ease);
 }
 
 .footer-link:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 190, 205, 0.55);
+  border-color: color-mix(in srgb, var(--teal) 55%, transparent);
   color: #fff;
-  box-shadow: 0 0 28px rgba(0, 190, 205, 0.18);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--teal) 18%, transparent);
 }
 
 .footer-link:focus-visible {
   outline: none;
-  border-color: rgba(0, 190, 205, 0.7);
+  border-color: color-mix(in srgb, var(--teal) 70%, transparent);
 }
 
 .footer-icon {
