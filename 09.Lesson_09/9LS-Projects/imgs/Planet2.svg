@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 93.1 108.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #ff6700;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        fill: gold;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="17.41" y1="-282.9" x2="61.71" y2="-238.6" gradientTransform="translate(0 307.03)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00becd"/>
+      <stop offset="1" stop-color="#0093ba"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="Planet_1" data-name="Planet 1">
+      <path class="cls-2" d="M33.4,1.62c1.3-.4,3.2.2,5.6,2.4,2.3,2.1,4.9,5.5,7.6,10,5.4,8.8,11.1,21.7,15.8,36.3,4.7,14.7,7.5,28.4,8.3,38.7.4,5.2.3,9.4-.4,12.5-.7,3.2-1.8,4.8-3.1,5.2-1.3.4-3.2-.2-5.6-2.4-2.3-2.1-4.9-5.5-7.6-10-5.4-8.8-11.1-21.7-15.8-36.3-4.7-14.7-7.5-28.4-8.3-38.7-.4-5.2-.3-9.4.4-12.5.7-3.2,1.8-4.8,3.1-5.2Z"/>
+      <circle class="cls-1" cx="48.4" cy="55.12" r="31"/>
+      <circle class="cls-3" cx="87.1" cy="61.12" r="6"/>
+      <circle class="cls-3" cx="7.5" cy="81.62" r="7.5"/>
+      <path class="cls-2" d="M29.9,19.32c-.4-5.2-.3-9.4.4-12.5.7-3.2,1.8-4.8,3.1-5.2,1.3-.4,3.2.2,5.6,2.4,2.3,2.1,4.9,5.5,7.6,10,5.4,8.8,11.1,21.7,15.8,36.3,4.7,14.7,7.5,28.4,8.3,38.7.4,5.2.3,9.4-.4,12.5-.7,3.2-1.8,4.8-3.1,5.2-1.3.4-3.2-.2-5.6-2.4-2.3-2.1-4.9-5.5-7.6-10"/>
+    </g>
+  </g>
+</svg>

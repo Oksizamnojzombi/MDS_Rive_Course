@@ -13,12 +13,13 @@ const fitContain = {
 
 export const instances = [];
 
-function mount(canvasId, src, stateMachine) {
+function mount(canvasId, src, stateMachine, artboard) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
   const inst = new rive.Rive({
     src,
     canvas,
+    artboard,
     autoplay: true,
     stateMachines: stateMachine,
     layout: new rive.Layout(fitContain),
@@ -37,3 +38,5 @@ mount("canvas5", "05.Lesson_05/Final_Result/05.mds_lesson05_artistparallax.riv",
 mount("canvas6", "06.Lesson_06/Final_Result/06.mds_lesson06_lazerboy.riv", "LazerBoyStateMashine");
 mount("canvas7", "07.Lesson_07/Final_Result/07.mds_lesson07_firesiage.riv", "Fire360_StateMashine");
 mount("canvas8", "08.Lesson_08/Final_Result/08.mds_lesson08_octopus.riv", "OctopusEcho");
+mount("canvas9", "09.Lesson_09/Final_Result/09.mds_lesson09.riv", "State Machine 1", "Inner Space");
+mount("canvas10", "10.Lesson_10/Final_Result/10.mdl_pluto_lesson10.riv", "PlutoRoutine", "Planet_Remap");
