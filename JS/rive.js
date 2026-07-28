@@ -40,3 +40,4 @@ mount("canvas7", "07.Lesson_07/Final_Result/07.mds_lesson07_firesiage.riv", "Fir
 mount("canvas8", "08.Lesson_08/Final_Result/08.mds_lesson08_octopus.riv", "OctopusEcho");
 mount("canvas9", "09.Lesson_09/Final_Result/09.mds_lesson09.riv", "State Machine 1", "Inner Space");
 mount("canvas10", "10.Lesson_10/Final_Result/10.mdl_pluto_lesson10.riv", "PlutoRoutine", "Planet_Remap");
+mount("canvas11", "11.Lesson_11/Final_Result/11.mds_lesson11_spaceduo.riv", "SpaceDuo");
