@@ -197,6 +197,7 @@ body::before {
   grid-auto-flow: row dense;    /* pack cards into gaps */
   gap: clamp(14px, 1.6vw, 22px);
   align-items: start;
+  counter-reset: card;          /* auto-numbering: cards count themselves in DOM order */
 }
 
 /* card wider than 1 column (e.g. Artist Parallax 750x500) */
@@ -210,6 +211,7 @@ body::before {
   position: relative;
   display: flex;
   flex-direction: column;
+  counter-increment: card; /* each card bumps the display-order number */
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -270,6 +272,12 @@ body::before {
   letter-spacing: 0.18em;
   color: var(--accent);
   opacity: 0.9;
+}
+
+/* auto-number in display order (01, 02, …) — only when the span is empty,
+   so hand-typed numbers in the HTML still win if they ever come back */
+.card-num:empty::before {
+  content: counter(card, decimal-leading-zero);
 }
 
 .card-canvas::after {
